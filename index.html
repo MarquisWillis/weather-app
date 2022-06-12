@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,23 +14,36 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./develop/css/style.css">
 </head>
+
 <body>
     <div class="jumbotron jumbotron-fluid">
         <div class="container d-flex justify-content-center">
-          <h1 class="display-4">Weather Dashboard</h1>
+            <h1 class="display-4">Weather Dashboard</h1>
         </div>
-      </div>
-
-    <div id="serach-container">
-        <h3>Search for a city:</h3>
-        <input type="text">
-        <button>Search</button>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <h3 class="col-2">Search for a city:</h3>
+        </div>
+        <div class="row">
+            <input type="text" class="col-2">
+        </div>
+        <br>
+        <div class="row">
+            <button class="col-2">Search</button>
+        </div>
+    </div>
+    
 
     <div id="city-container">
-        
+
     </div>
+
+
+
 
     <script src="./develop/js/script.js"></script>
 </body>
+
 </html>
