@@ -13,12 +13,13 @@
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./develop/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js" defer></script>
   <script src="./develop/js/script.js" defer></script>
 </head>
 
 <body>
   <!-- header container -->
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron jumbotron-fluid bg-primary text-white">
     <div class="container d-flex justify-content-center">
       <h1 class="display-4">Weather Dashboard</h1>
     </div>
@@ -27,66 +28,96 @@
   <!-- search container -->
   <div class="container">
     <div class="row">
-      <div class="col-3">
-        <h3>Search for a city:</h3>
-        <input type="text">
-        <button>Search</button>
+      <div class="col-sm-3 ml-3 mt-4">
+        <form id="city-form">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">
+              <h4>Search for a City</h4>
+            </label>
+            <input class="form-control" id="city-input">
+
+          </div>
+
+
+          <button type="submit" class="btn btn-primary w-100" id="search-btn">Search</button>
+
+          <ul class="list-group">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+            <li class="list-group-item">A fourth item</li>
+            <li class="list-group-item">And a fifth one</li>
+          </ul>
+        </form>
       </div>
 
 
       <!-- current city info -->
       <div class="col-9 d-flex flex-column justify-content-start align-items-start">
 
-        <div class="border border-dark w-100">
-          <h3>City (3/30/2021) {emoji}</h3>
+        <div class="container border border-dark w-100 mt-4 ml-3">
 
-          <p>Temp: </p>
-          <p>Wind: </p>
+          <h3> <span id="city-name">City</span> <span id="current-date">(3/30/2021)</span> <span
+              id="weather-icon">{emoji}</span> </h3>
 
-          <p>Humidity: </p>
+          <p>Temp: <span id="city-temp"></span> </p>
+          <p>Wind: <span id="city-wind"></span> </p>
+          <p>Humidity: <span id="city-humidity"></span> </p>
+          <p>UV Index: <span id="city-index"></span> </p>
 
-          <p>UV Index: </p>
         </div>
 
-        <div class="pt-4">
-          <h3>5 Day Forecast:</h3>
+        <div class="mt-4 ml-3">
+          <h3 class="mb-3">5 Day Forecast:</h3>
 
           <!-- 5-Day Forecast -->
-          <div class="row d-flex justify-content-between">
+          <div class="row d-flex justify-content-around">
+
             <div class="card col-2">
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title"> <span class="date">Date</span> </h5>
+                <p class="card-text">Temp: <span class="temp"></span></p>
+                <p class="card-text">Wind: <span class="wind"></span></p>
+                <p class="card-text">Humidity: <span class="humidity"></span></p>
               </div>
             </div>
 
             <div class="card col-2">
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title"> <span class="date">Date</span> </h5>
+                <p class="card-text">Temp: <span class="temp"></span></p>
+                <p class="card-text">Wind: <span class="wind"></span></p>
+                <p class="card-text">Humidity: <span class="humidity"></span></p>
               </div>
             </div>
 
             <div class="card col-2">
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title"> <span class="date">Date</span> </h5>
+                <p class="card-text">Temp: <span class="temp"></span></p>
+                <p class="card-text">Wind: <span class="wind"></span></p>
+                <p class="card-text">Humidity: <span class="humidity"></span></p>
               </div>
             </div>
 
             <div class="card col-2">
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title"> <span class="date">Date</span> </h5>
+                <p class="card-text">Temp: <span class="temp"></span></p>
+                <p class="card-text">Wind: <span class="wind"></span></p>
+                <p class="card-text">Humidity: <span class="humidity"></span></p>
               </div>
             </div>
 
             <div class="card col-2">
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title"> <span class="date">Date</span> </h5>
+                <p class="card-text">Temp: <span class="temp"></span></p>
+                <p class="card-text">Wind: <span class="wind"></span></p>
+                <p class="card-text">Humidity: <span class="humidity"></span></p>
               </div>
             </div>
+
           </div>
 
         </div>

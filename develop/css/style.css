@@ -1,0 +1,8 @@
+.list-group-item {
+    background-color: lightgray;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center ;
+    cursor: pointer;
+    border-radius: 3px;
+}
