@@ -13,10 +13,10 @@ let cityHumidityEl = document.querySelector("#city-humidity");
 let cityIndexEl = document.querySelector("#city-index");
 
 // forcast selectors
-let forcastDatesEl = document.querySelectorAll("#date");
-let forcastTempsEl = document.querySelectorAll("#temp");
-let forcastWindEl = document.querySelectorAll("#wind");
-let forcastHumidityEl = document.querySelectorAll("#humidity");
+let forcastDatesEl = document.querySelectorAll(".date");
+let forcastTempsEl = document.querySelectorAll(".temp");
+let forcastWindEl = document.querySelectorAll(".wind");
+let forcastHumidityEl = document.querySelectorAll(".humidity");
 
 // list selectors
 let lookupListEl = document.querySelector(".list-group");
@@ -24,23 +24,8 @@ let lookupListItemEl = document.querySelectorAll(".list-group-item");
 
 let token = "46495279b19633c49705d934177ecf46";
 
-// step 2: add functions for event listeners
 
-
-// function handleFormSubmit(event) {
-//     event.preventDefault();
-
-//     let cityNameVal = cityEl.value;
-//     let urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameVal}&appid=${token}&units=imperial`
-
-//     fetch(urlCurrent)
-//     .then(function(response) {
-//         return response.json();
-//     })
-//     .then(function(currentData) {
-//         console.log(currentData);
-//     })
-// }
+// function declarations
 
 function displayWeatherDash(event) {
     event.preventDefault()
@@ -77,14 +62,34 @@ function displayWeatherDash(event) {
                     cityTempEl.textContent = currentData.main.temp
                     cityWindEl.textContent = currentData.wind.speed
                     cityHumidityEl.textContent = currentData.main.humidity
-                    cityIndexEl.textContent = fiveData.current.uvi         
+                    cityIndexEl.textContent = fiveData.current.uvi 
+                    
+                    
+                    for (let i = 0; i < 5; i++) {
+                        /* 
+                            forcastDatesEl
+                            forcastTempsEl
+                            forcastWindEl
+                            forcastHumidityEl
+                         */
+                        let forcastDate = moment.unix(fiveData.daily[i].dt).format("MM/DD/YYYY")
+                        let currentImgEl = document.createElement("img")
+                        let currentTemp = fiveData.daily[i].temp.day
+                        let currentWind = fiveData.daily[i].wind_speed
+                        let currentHumiditiy = fiveData.daily[i].humidity
+
+                        forcastDatesEl[i].innerHTML = forcastDate
+                        currentImgEl.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[i].weather[0].icon}@2x.png`)
+                        forcastDatesEl[i].appendChild(currentImgEl)
+                        
+                        forcastTempsEl[i].textContent = currentTemp
+                        forcastWindEl[i].textContent = currentWind
+                        forcastHumidityEl[i].textContent = currentHumiditiy
+                    }
+                    
 
                 })
         })
-}
-
-function displayCurrentCity() {
-
 }
 
 
