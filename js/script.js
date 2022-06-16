@@ -24,9 +24,11 @@ let lookupListItemEl = document.querySelectorAll(".list-group-item");
 
 let token = "46495279b19633c49705d934177ecf46";
 
+let currentInput = localStorage.getItem("city-input");
 
 // function declarations
 
+// 1 of 2 functions used in saveAndDisplay: displays the main dashboard for current user input
 function displayWeatherDash(event) {
     event.preventDefault()
     let cityNameVal = cityEl.value
@@ -66,12 +68,7 @@ function displayWeatherDash(event) {
                     
                     
                     for (let i = 0; i < 5; i++) {
-                        /* 
-                            forcastDatesEl
-                            forcastTempsEl
-                            forcastWindEl
-                            forcastHumidityEl
-                         */
+
                         let forcastDate = moment.unix(fiveData.daily[i].dt).format("MM/DD/YYYY")
                         let currentImgEl = document.createElement("img")
                         let currentTemp = fiveData.daily[i].temp.day
@@ -87,14 +84,30 @@ function displayWeatherDash(event) {
                         forcastHumidityEl[i].textContent = currentHumiditiy
                     }
                     
-
+                    
                 })
         })
+}
+
+// 2 of 2 functions used for saveAndDisplay(): handles the local storage and list addition based on input
+function saveAndDisplayInput (event) {
+    event.preventDefault()
+    localStorage.setItem("city-input", cityEl.value)
+    let listItemAdd = document.createElement("li")
+    listItemAdd.setAttribute("class", "list-group-item")
+    listItemAdd.textContent = localStorage.getItem("city-input")
+
+    lookupListEl.appendChild(listItemAdd)
+}
+
+// function used in add event listener for form submit
+function saveAndDisplay(event) {
+    displayWeatherDash(event);
+    saveAndDisplayInput(event);
 }
 
 
 
 // step 3: add Event listeners for proper selectors
 
-cityFormEl.addEventListener("submit", displayWeatherDash);
-// lookupListItemEl.addEventListener("click", displayCurrentCity);
+cityFormEl.addEventListener("submit", saveAndDisplay);
