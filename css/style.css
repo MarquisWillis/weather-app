@@ -6,3 +6,7 @@
     cursor: pointer;
     border-radius: 3px;
 }
+
+.hide {
+    display: none;
+}
